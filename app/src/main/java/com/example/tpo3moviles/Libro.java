@@ -1,18 +1,26 @@
 package com.example.tpo3moviles;
 
-public class Libro {
-    public String title, autor, year, description ;
-    public  int image;
+import java.io.Serializable;
+import java.util.List;
 
-    public Libro(){
+public class Libro implements Serializable {
+    public String title, autor, year, description;
+    public int image;
+    public int pages;
+    public List<String> genres;
+
+    public Libro() {
 
     }
-    public Libro(String title, String autor, String year, String description, int image) {
+
+    public Libro(String title, String autor, String year, String description, int image, int pages, List<String> genres) {
         this.title = title;
         this.autor = autor;
         this.year = year;
         this.description = description;
         this.image = image;
+        this.pages = pages;
+        this.genres = genres;
     }
 
     public String getTitle() {
@@ -53,5 +61,21 @@ public class Libro {
 
     public void setAutor(String autor) {
         this.autor = autor;
+    }
+
+    public int getPages() {
+        return pages;
+    }
+
+    public void setPages(int pages) {
+        this.pages = pages;
+    }
+
+    public List<String> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<String> genres) {
+        this.genres = genres;
     }
 }

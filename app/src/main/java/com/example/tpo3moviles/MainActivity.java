@@ -1,31 +1,39 @@
 package com.example.tpo3moviles;
 
-import android.os.Bundle;
+import static android.widget.Toast.LENGTH_SHORT;
 
-import androidx.activity.EdgeToEdge;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.tpo3moviles.databinding.ActivityMainBinding;
 
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
-    private MainViewModel viewModel;
-    private ActivityMainBinding binding;
+    private MainViewModel vm;
+    private ActivityMainBinding b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        b = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(b.getRoot());
 
-        viewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(MainViewModel.class);
+        vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(MainViewModel.class);
 
-
-
+        b.btnSearch.setOnClickListener(view -> {
+            vm.buscarLibro(b.etSearch.getText().toString());
+        });
+        vm.getLibroMutable().observe(this, libro -> {
+            Intent intent = new Intent(MainActivity.this, DetalleActivity.class);
+            intent.putExtra("libro", libro);
+            startActivity(intent);
+        });
+        vm.getErrorMutable().observe(this, error -> {
+            Toast.makeText(MainActivity.this, error, LENGTH_SHORT).show();
+        });
     }
+
 }

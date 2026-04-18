@@ -2,23 +2,40 @@ package com.example.tpo3moviles;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.example.tpo3moviles.databinding.ActivityDetalleBinding;
+import com.google.android.material.chip.Chip;
 
 public class DetalleActivity extends AppCompatActivity {
+    private ActivityDetalleBinding b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_detalle);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        b = ActivityDetalleBinding.inflate(getLayoutInflater());
+        setContentView(b.getRoot());
+
+        Libro libro = getIntent().getSerializableExtra("libro", Libro.class);
+
+        b.title.setText(libro.getTitle());
+        b.description.setText(libro.getDescription());
+        b.autor.setText(libro.getAutor());
+        b.year.setText("Año: " + libro.getYear());
+        b.pages.setText("Páginas: " + libro.getPages() + " \uD83D\uDCC4");
+        b.img.setImageResource(libro.getImage());
+
+        if (libro.getGenres() != null) {
+            for (String genre : libro.getGenres()) {
+                Chip chip = new Chip(this);
+                chip.setText(genre);
+                b.chipGroup.addView(chip);
+            }
+        }
+        b.btnVolver.setOnClickListener(view -> {
+            finish();
         });
     }
+
+
 }
