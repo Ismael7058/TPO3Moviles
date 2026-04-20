@@ -7,14 +7,14 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 public class MainViewModel extends AndroidViewModel {
-    private MutableLiveData<Libro> libroMutable;
+    private MutableLiveData<Integer> libroMutable;
     private MutableLiveData<String> errorMutable;
 
     public MainViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public MutableLiveData<Libro> getLibroMutable() {
+    public MutableLiveData<Integer> getLibroMutable() {
         if (libroMutable == null) {
             libroMutable = new MutableLiveData<>();
         }
@@ -34,8 +34,8 @@ public class MainViewModel extends AndroidViewModel {
             errorMutable.setValue("Primero ingrese un titulo");
             return;
         }
-        Libro libro = LibroData.buscarLibro(query);
-        if (libro == null) {
+        int  libro = LibroData.buscarLibro(query);
+        if (libro == 0) {
             errorMutable.setValue("No se encontro el libro");
             return;
         }

@@ -16,8 +16,8 @@ public class DetalleActivity extends AppCompatActivity {
         b = ActivityDetalleBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
 
-        Libro libro = getIntent().getSerializableExtra("libro", Libro.class);
-
+        int idLibro = getIntent().getIntExtra("libro", 0);
+        Libro libro = LibroData.buscarLibro(idLibro);
         b.title.setText(libro.getTitle());
         b.description.setText(libro.getDescription());
         b.autor.setText(libro.getAutor());

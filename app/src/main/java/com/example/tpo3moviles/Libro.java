@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Libro implements Serializable {
+    public int id;
     public String title, autor, year, description;
     public int image;
     public int pages;
@@ -13,7 +14,8 @@ public class Libro implements Serializable {
 
     }
 
-    public Libro(String title, String autor, String year, String description, int image, int pages, List<String> genres) {
+    public Libro(int id, String title, String autor, String year, String description, int image, int pages, List<String> genres) {
+        this.id = id;
         this.title = title;
         this.autor = autor;
         this.year = year;
@@ -21,6 +23,14 @@ public class Libro implements Serializable {
         this.image = image;
         this.pages = pages;
         this.genres = genres;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
