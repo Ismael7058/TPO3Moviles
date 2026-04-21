@@ -1,0 +1,9 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- Cambia el transparente por un color (ej: un rojo suave o gris claro) -->
+    <solid android:color="#F2F2F2"/>
+    <corners android:radius="100dp"/>
+    <stroke
+        android:width="2dp"
+        android:color="#00FF00"/>
+</shape>

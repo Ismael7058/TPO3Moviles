@@ -5,83 +5,141 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetalleActivity">
+    tools:context=".DetalleActivity"
+    tools:layout_editor_absoluteX="-67dp"
+    tools:layout_editor_absoluteY="-430dp">
 
-    <ImageView
-        android:id="@+id/img"
-        android:layout_width="144dp"
-        android:layout_height="174dp"
-        android:layout_marginBottom="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/description"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/contenedor"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/autor"
+        android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.551"
-        tools:layout_editor_absoluteX="200dp" />
-
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="264dp"
-        android:layout_height="322dp"
-        android:layout_marginStart="80dp"
-        android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="240dp" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="140dp"
+            android:layout_height="200dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginVertical="15dp"
+            android:elevation="4dp"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingVertical="10dp">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                tools:text="Título del Libro" />
+
+            <TextView
+                android:id="@+id/autor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toTopOf="@+id/autor"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.551"
+                tools:layout_editor_absoluteX="200dp" />
+
+            <TextView
+                android:id="@+id/year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="#666666"
+                android:textSize="16sp"
+                tools:text="Autor del Libro" />
+
+            <TextView
+                android:id="@+id/pages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toTopOf="@+id/year"
+                tools:layout_editor_absoluteX="200dp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/tags"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:minHeight="40dp">
+
+                    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/tvTag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/pildora"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="6dp"
+                        android:textColor="#BF1414" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contenedor">
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="4sp"
+            android:textSize="16sp"
+            tools:text="Descripción del Libro......" />
+    </ScrollView>
+
+
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="Button"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#BF1414"
+        android:text="Regresar"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.161"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup"
-        android:layout_width="186dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/description"
-        tools:layout_editor_absoluteX="200dp">
 
-    </com.google.android.material.chip.ChipGroup>
-
-    <TextView
-        android:id="@+id/autor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/countVist"
-        tools:layout_editor_absoluteX="200dp" />
-
-    <TextView
-        android:id="@+id/year"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/chipGroup"
-        tools:layout_editor_absoluteX="200dp" />
-
-    <TextView
-        android:id="@+id/countVist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/year"
-        tools:layout_editor_absoluteX="200dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
