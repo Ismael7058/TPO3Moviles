@@ -1,4 +1,4 @@
-package com.example.tpo3moviles;
+package com.example.tpo3moviles.Model;
 
 import java.io.Serializable;
 

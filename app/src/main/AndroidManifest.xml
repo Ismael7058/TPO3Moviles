@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TPO3Moviles">
         <activity
-            android:name=".DetalleActivity"
+            android:name=".View.DetalleActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

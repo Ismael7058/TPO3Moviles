@@ -29,7 +29,7 @@
         android:hint="🔍 El Principito..."
         android:inputType="text"
         android:minHeight="48dp"
-        android:text=""
+        android:text="El Principito"
         app:layout_constraintBottom_toTopOf="@+id/btnSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.517"
